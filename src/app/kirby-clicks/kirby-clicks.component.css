@@ -1,5 +1,31 @@
 .mario-bg {
-  background: url(../../assets/background1.jpg) no-repeat center center fixed;
+  background: url(../../assets/images/background1.jpg) no-repeat center center
+    fixed;
   background-size: cover;
   height: 100vh;
+}
+
+.left-mid {
+  left: 42%;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Start at normal size */
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    transform: scale(1.2); /* Scale up to 120% */
+    opacity: 0.7; /* Slightly fade out */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+    opacity: 1; /* Fully visible again */
+  }
+}
+
+/* Apply the animation to the element */
+.pulse {
+  border-radius: 60%; /* Make it a circle */
+  animation: pulse 0.6s infinite; /* 2s duration, infinite loop */
 }
