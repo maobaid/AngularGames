@@ -1,9 +1,10 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-kirby-clicks',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './kirby-clicks.component.html',
   styleUrl: './kirby-clicks.component.css',
 })
@@ -42,5 +43,9 @@ export class KirbyClicksComponent {
     this.showFlower = false;
     this.coins -= 10;
     this.coins += this.clicks * 2;
+    this.flowerCliked = true;
+    setTimeout(() => {
+      this.flowerCliked = false;
+    }, 1000);
   }
 }

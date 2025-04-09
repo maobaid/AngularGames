@@ -8,7 +8,7 @@
       STAAAAART
     </button>
     <img
-      class="absolute bottom-10 left-mid"
+      class="absolute bottom-5 left-mid"
       src="assets/images/moving7.gif"
       width="100"
       alt="kirby"
@@ -28,7 +28,13 @@
 
     <div class="absolute top-20 right-20 items-center">
       <div class="flex w-40 items-center">
-        <img src="assets/images/coin.png" class="mx-3" alt="coin" width="50" />
+        <img
+          src="assets/images/coin.png"
+          class="mx-3"
+          [ngClass]="{ coin: flowerCliked }"
+          alt="coin"
+          width="50"
+        />
         <label class="text-6xl">x{{ coins }}</label>
       </div>
       <div class="flex w-40 items-center">
@@ -41,7 +47,7 @@
       <label class="mx-20 text-6xl text-center w-60">{{ clicks }}</label>
     </div>
 
-    <div class="absolute bottom-0 left-mid flex-col mt-50">
+    <div class="absolute bottom-5 left-mid flex-col mt-50">
       <img src="assets/images/box.png" class="mt-30" />
       @if(!kirbyClicked){
       <img

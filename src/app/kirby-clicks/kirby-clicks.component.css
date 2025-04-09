@@ -1,6 +1,5 @@
 .mario-bg {
-  background: url(../../assets/images/background1.jpg) no-repeat center center
-    fixed;
+  background: url(../../assets/images/bg-3.gif) no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
 }
@@ -28,4 +27,18 @@
 .pulse {
   border-radius: 60%; /* Make it a circle */
   animation: pulse 0.6s infinite; /* 2s duration, infinite loop */
+}
+
+.coin {
+  animation: spinHoriz 1s infinite linear;
+}
+
+/* 3D animation for vertical spin */
+@keyframes spinHoriz {
+  0% {
+    transform: rotateY(0deg); /* No rotation at the start */
+  }
+  100% {
+    transform: rotateY(360deg); /* Full 360-degree rotation on X-axis */
+  }
 }
