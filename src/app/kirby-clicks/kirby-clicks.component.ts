@@ -24,6 +24,7 @@ export class KirbyClicksComponent {
   boostFlowerClicked = false;
 
   kirbySize = 100;
+  BoxSize = 100;
 
   startGame() {
     this.gameStarted = true;
@@ -79,6 +80,7 @@ export class KirbyClicksComponent {
       this.boostFlowerClicked = true;
       this.flowerCount--;
       this.kirbySize = 300;
+      this.BoxSize = 250;
       this.intervalId = setInterval(() => {
         if (this.countdown > 0) {
           this.countdown--;
@@ -89,6 +91,7 @@ export class KirbyClicksComponent {
           console.log('Countdown complete!');
           this.boostFlowerClicked = false;
           this.kirbySize = 100;
+          this.BoxSize = 100;
           this.countdown = 5;
         }
       }, 1000);
