@@ -15,8 +15,9 @@ export class KirbyClicksComponent {
   kirbyClicked = false;
   flowerCliked = false;
   showFlower = false;
-
   flowerCount: number = 0;
+  starCount: number = 0;
+  showStar = false;
 
   startGame() {
     this.gameStarted = true;
@@ -30,6 +31,9 @@ export class KirbyClicksComponent {
     } else if (this.clicks % 10 == 0) {
       //show flower
       this.showFlower = true;
+      if (this.flowerCount % 3 == 0) {
+        this.showStar = true;
+      }
     } else {
       this.coins += 2;
     }
@@ -47,5 +51,9 @@ export class KirbyClicksComponent {
     setTimeout(() => {
       this.flowerCliked = false;
     }, 1000);
+  }
+
+  onStarClick() {
+    this.starCount++;
   }
 }

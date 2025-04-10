@@ -1,6 +1,7 @@
 <div class="static justify-center items-center mario-bg">
   <div>
     @if(!gameStarted){
+    <!-- --------------- START Button ------------- -->
     <button
       class="absolute top-20 left-mid bg-amber-500 hover:bg-amber-400 text-white text-3xl font-extrabold py-6 px-12 border-b-8 border-amber-700 hover:border-amber-500 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-200"
       (click)="startGame()"
@@ -12,8 +13,12 @@
       src="assets/images/moving7.gif"
       width="100"
       alt="kirby"
-    />} @if(gameStarted){ @if(showFlower){
-    <div class="absolute top-40 left-20 pulse">
+    />}
+
+    <!-- --------------- GAME STARTED Part START ------------- -->
+    @if(gameStarted){ @if(showFlower){
+    <!-- --------------- BONUS Section START ------------- -->
+    <div class="absolute top-60 left-60 pulse">
       <div class="flex flex-col items-center">
         <label class="text-3xl">Extra Points</label>
         <img
@@ -24,8 +29,22 @@
         <label class="text-2xl">10 Coins</label>
       </div>
     </div>
+    <div class="absolute top-110 left-100">
+      <div class="flex flex-col items-center">
+        <label class="text-3xl">Monster Kirby</label>
+        <img
+          (click)="onStarClick()"
+          class="shadow"
+          src="assets/images/star.png"
+          width="100"
+        />
+        <label class="text-2xl">30 Coins</label>
+      </div>
+    </div>
+    <!-- --------------- BONUS Section END ------------- -->
     }
 
+    <!-- --------------- Rewards Part START ------------- -->
     <div class="absolute top-20 right-20 items-center">
       <div class="flex w-40 items-center">
         <img
@@ -41,12 +60,20 @@
         <img src="assets/images/flower.png" class="mx-3" width="50" />
         <label class="text-6xl">x{{ flowerCount }}</label>
       </div>
+      <div class="flex w-40 items-center">
+        <img src="assets/images/star.png" class="mx-3" width="50" />
+        <label class="text-6xl">x{{ starCount }}</label>
+      </div>
     </div>
+    <!-- --------------- Rewards Part END ------------- -->
+    <!-- --------------- Total Clicks Part START ------------- -->
     <div class="absolute top-20 left-mid w-60">
       <label class="text-3xl">TOTAL CLICKS </label>
       <label class="mx-20 text-6xl text-center w-60">{{ clicks }}</label>
     </div>
+    <!-- --------------- Total Clicks Part END ------------- -->
 
+    <!-- --------------- Sprite Part START ------------- -->
     <div class="absolute bottom-5 left-mid flex-col mt-50">
       <img src="assets/images/box.png" class="mt-30" />
       @if(!kirbyClicked){
@@ -60,7 +87,9 @@
       <img src="assets/images/moving8.png" width="200" alt="clickedKirpy" />
       }
     </div>
+    <!-- --------------- Sprite Part END ------------- -->
 
     }
+    <!-- --------------- GAME STARTED Part END ------------- -->
   </div>
 </div>

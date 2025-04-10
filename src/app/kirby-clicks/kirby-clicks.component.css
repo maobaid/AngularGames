@@ -26,7 +26,7 @@
 /* Apply the animation to the element */
 .pulse {
   border-radius: 60%; /* Make it a circle */
-  animation: pulse 0.6s infinite; /* 2s duration, infinite loop */
+  animation: pulse 1s infinite; /* 2s duration, infinite loop */
 }
 
 .coin {
@@ -40,5 +40,22 @@
   }
   100% {
     transform: rotateY(360deg); /* Full 360-degree rotation on X-axis */
+  }
+}
+
+.shadow {
+  filter: drop-shadow(4px 4px 25px rgba(255, 215, 0, 0.8));
+  animation: glowPulse 1s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
   }
 }
