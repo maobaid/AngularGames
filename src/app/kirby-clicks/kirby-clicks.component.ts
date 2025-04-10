@@ -66,7 +66,6 @@ export class KirbyClicksComponent {
   onStarClick() {
     this.starCount++;
     this.showStar = false;
-    this.flowerCount -= 1;
     this.coins -= 30;
     this.starCliked = true;
     this.coins += this.clicks * 3;
