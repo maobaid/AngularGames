@@ -16,7 +16,36 @@
     />}
 
     <!-- --------------- GAME STARTED Part START ------------- -->
-    @if(gameStarted){ @if(showFlower){
+    @if(gameStarted){
+
+    <!-- --------------- counter Part START ------------- -->
+    @if(boostFlowerClicked){
+    <div class="absolute top-5 left-mid">
+      <p class="text-3xl text-red-500">
+        Countdown: <span class="text-5xl">00:0{{ countdown }}</span>
+      </p>
+    </div>
+    }
+    <!-- --------------- counter Part END ------------- -->
+
+    <!-- --------------- PowerUps Part START ------------- -->
+    <div class="absolute top-5 left-20">
+      <button
+        class="bg-amber-500 hover:bg-amber-400 text-white text-3xl font-extrabold py-2 px-12 border-b-8 border-amber-700 hover:border-amber-500 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-200"
+        [ngClass]="{ disabled: 'boostFlowerClicked || flowerCount < 1' }"
+        (click)="biggerKirby()"
+      >
+        <label>Boost</label>
+        <br />
+        <div class="flex justify-center">
+          <label>1 X &nbsp;</label>
+          <img src="assets/images/flower.png" width="30" />
+        </div>
+      </button>
+    </div>
+    <!-- --------------- PowerUps Part END ------------- -->
+
+    @if(showFlower){
     <!-- --------------- BONUS Section START ------------- -->
     <div class="absolute top-60 left-60 pulse">
       <div class="flex flex-col items-center">
@@ -29,6 +58,8 @@
         <label class="text-2xl">10 Coins</label>
       </div>
     </div>
+
+    }@if (showStar) {
     <div class="absolute top-110 left-100">
       <div class="flex flex-col items-center">
         <label class="text-3xl">Monster Kirby</label>
@@ -41,11 +72,10 @@
         <label class="text-2xl">30 Coins</label>
       </div>
     </div>
-    <!-- --------------- BONUS Section END ------------- -->
     }
-
+    <!-- --------------- BONUS Section END ------------- -->
     <!-- --------------- Rewards Part START ------------- -->
-    <div class="absolute top-20 right-20 items-center">
+    <div class="absolute top-30 right-30 items-center">
       <div class="flex w-40 items-center">
         <img
           src="assets/images/coin.png"
@@ -67,7 +97,7 @@
     </div>
     <!-- --------------- Rewards Part END ------------- -->
     <!-- --------------- Total Clicks Part START ------------- -->
-    <div class="absolute top-20 left-mid w-60">
+    <div class="absolute top-30 left-mid w-60">
       <label class="text-3xl">TOTAL CLICKS </label>
       <label class="mx-20 text-6xl text-center w-60">{{ clicks }}</label>
     </div>
@@ -80,7 +110,7 @@
       <img
         (click)="onKirbyClick()"
         src="assets/images/moving7.gif"
-        width="100"
+        [width]="kirbySize"
         alt="kirby2"
       />
       } @if(kirbyClicked){

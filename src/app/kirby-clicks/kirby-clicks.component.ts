@@ -18,6 +18,12 @@ export class KirbyClicksComponent {
   flowerCount: number = 0;
   starCount: number = 0;
   showStar = false;
+  starCliked = false;
+  countdown: number = 5;
+  intervalId: any;
+  boostFlowerClicked = false;
+
+  kirbySize = 100;
 
   startGame() {
     this.gameStarted = true;
@@ -26,16 +32,20 @@ export class KirbyClicksComponent {
   onKirbyClick() {
     this.kirbyClicked = true;
     this.clicks++;
-    if (this.clicks < 10) {
-      this.coins = this.clicks;
+    if (this.boostFlowerClicked) {
+      this.coins += this.coins * 2;
     } else if (this.clicks % 10 == 0) {
       //show flower
       this.showFlower = true;
-      if (this.flowerCount % 3 == 0) {
+      if (this.flowerCount % 3 == 0 && this.flowerCount != 0) {
         this.showStar = true;
+        this.showFlower = false;
+
+        console.log('Show flower ' + this.showFlower);
+        console.log('Show star ' + this.showStar);
       }
     } else {
-      this.coins += 2;
+      this.coins++;
     }
     setTimeout(() => {
       this.kirbyClicked = false;
@@ -55,5 +65,34 @@ export class KirbyClicksComponent {
 
   onStarClick() {
     this.starCount++;
+    this.showStar = false;
+    this.flowerCount -= 1;
+    this.coins -= 30;
+    this.starCliked = true;
+    this.coins += this.clicks * 3;
+    setTimeout(() => {
+      this.starCliked = false;
+    }, 1000);
+  }
+
+  biggerKirby() {
+    if (this.flowerCount > 0) {
+      this.boostFlowerClicked = true;
+      this.flowerCount--;
+      this.kirbySize = 300;
+      this.intervalId = setInterval(() => {
+        if (this.countdown > 0) {
+          this.countdown--;
+          //kirby size x2 , coins *4
+        } else {
+          clearInterval(this.intervalId);
+          // Optionally do something when the countdown finishes
+          console.log('Countdown complete!');
+          this.boostFlowerClicked = false;
+          this.kirbySize = 100;
+          this.countdown = 5;
+        }
+      }, 1000);
+    }
   }
 }

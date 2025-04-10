@@ -59,3 +59,8 @@
     filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
   }
 }
+
+.disabled {
+  background-color: rgba(181, 181, 173, 0.8);
+  border-color: rgba(143, 143, 137, 0.8);
+}
