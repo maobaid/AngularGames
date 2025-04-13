@@ -26,11 +26,36 @@ export class KirbyClicksComponent {
   kirbySize = 100;
   BoxSize = 100;
 
+  themeAudio = new Audio();
+  clickAudio = new Audio();
+
+  isMuted = false;
+
+  muteImg = 'assets/images/unmuted.png';
+
+  constructor() {
+    this.clickAudio.src = 'assets/sounds/mario-jump.mp3';
+    this.clickAudio.load();
+    this.themeAudio.src = 'assets/sounds/Kirby-Dream.mp3';
+    this.themeAudio.load();
+    this.themeAudio.play();
+  }
+
   startGame() {
     this.gameStarted = true;
   }
 
+  muteSound() {
+    this.isMuted = !this.isMuted;
+    this.muteImg = this.isMuted
+      ? 'assets/images/mute.png'
+      : 'assets/images/unmuted.png';
+    this.themeAudio.muted = this.isMuted;
+  }
+
   onKirbyClick() {
+    const audioClone = this.clickAudio.cloneNode(true) as HTMLAudioElement;
+    audioClone.play();
     this.kirbyClicked = true;
     this.clicks++;
     if (this.boostFlowerClicked) {
@@ -79,8 +104,8 @@ export class KirbyClicksComponent {
     if (this.flowerCount > 0) {
       this.boostFlowerClicked = true;
       this.flowerCount--;
-      this.kirbySize = 300;
-      this.BoxSize = 250;
+      this.kirbySize = 270;
+      this.BoxSize = 170;
       this.intervalId = setInterval(() => {
         if (this.countdown > 0) {
           this.countdown--;

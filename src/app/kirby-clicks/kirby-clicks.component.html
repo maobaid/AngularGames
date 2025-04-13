@@ -1,12 +1,15 @@
 <div class="static justify-center items-center mario-bg">
   <div>
+    <div class="absolute top-5 right-5">
+      <img [src]="muteImg" width="40" (click)="muteSound()" />
+    </div>
     @if(!gameStarted){
     <!-- --------------- START Button ------------- -->
     <button
       class="absolute top-20 left-mid bg-amber-500 hover:bg-amber-400 text-white text-3xl font-extrabold py-6 px-12 border-b-8 border-amber-700 hover:border-amber-500 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-200"
       (click)="startGame()"
     >
-      STAAAAART
+      START
     </button>
     <img
       class="absolute bottom-5 left-mid"
@@ -32,7 +35,7 @@
     <div class="absolute top-5 left-20">
       <button
         class="bg-amber-500 hover:bg-amber-400 text-white text-3xl font-extrabold py-2 px-12 border-b-8 border-amber-700 hover:border-amber-500 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-200"
-        [ngClass]="{ disabled: 'boostFlowerClicked || flowerCount < 1' }"
+        [ngClass]="{ disabled: boostFlowerClicked || flowerCount < 1 }"
         (click)="biggerKirby()"
       >
         <label>Boost</label>
